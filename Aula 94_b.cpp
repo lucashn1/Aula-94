@@ -1,0 +1,38 @@
+//Sensor Magnetico
+#include <SPI.h>
+
+#include <UIPEthernet.h>
+
+/*Sensor Magnetico com Arduino 
+MacAdress 94-4B-88-BD-92-3F
+*/
+
+int pino2 =2;
+bool estado_sensor;
+
+void setup (){
+
+pinMode (pino2,INPUT_PULLUP);
+Serial.begin(9600);
+}
+void loop ()
+{
+
+estado_sensor = digitalRead(pino2);
+
+Serial.print("O estado do sensor e: ");
+Serial.println(estado_sensor);
+delay(1000);
+
+if (estado_sensor == 0){
+Serial.println("Rack fechado.");
+delay (2000);
+
+}else {
+    Serial.println("Rack aberto.");
+    delay(2000);
+}
+
+
+
+}
